@@ -14,6 +14,8 @@ def main():
 
     storage.download_file("documents/sample.txt", "downloads/sample_downloaded.txt")
 
+    storage.file_information("documents/sample.txt")
+
     storage.delete_file("documents/sample.txt")
 
 

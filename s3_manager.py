@@ -93,3 +93,25 @@ class S3Manager:
         except Exception as e:
 
             print("Delete failed:", e)
+
+    def file_information(self, object_name):
+
+        try:
+
+            response = self.s3.head_object(Bucket=self.bucket_name, Key=object_name)
+
+            print("\nFile Information")
+
+            print("----------------------")
+
+            print("Name:", object_name)
+
+            print("Size:", response["ContentLength"], "bytes")
+
+            print("Content Type:", response.get("ContentType"))
+
+            print("Last Modified:", response["LastModified"])
+
+        except Exception as e:
+
+            print("Unable to retrieve file information:", e)
