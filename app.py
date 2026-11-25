@@ -12,6 +12,10 @@ def main():
 
     storage.list_files()
 
+    storage.download_file("documents/sample.txt", "downloads/sample_downloaded.txt")
+
+    storage.delete_file("documents/sample.txt")
+
 
 if __name__ == "__main__":
 

@@ -69,3 +69,27 @@ class S3Manager:
         except Exception as e:
 
             print("Error listing files:", e)
+
+    def download_file(self, object_name, download_path):
+
+        try:
+
+            self.s3.download_file(self.bucket_name, object_name, download_path)
+
+            print(f"Downloaded successfully: {download_path}")
+
+        except Exception as e:
+
+            print("Download failed:", e)
+
+    def delete_file(self, object_name):
+
+        try:
+
+            self.s3.delete_object(Bucket=self.bucket_name, Key=object_name)
+
+            print(f"Deleted successfully: {object_name}")
+
+        except Exception as e:
+
+            print("Delete failed:", e)
