@@ -1,0 +1,1 @@
+# flocci-cloud-storage-manager
