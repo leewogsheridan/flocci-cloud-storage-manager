@@ -8,6 +8,10 @@ def main():
 
     storage.create_bucket()
 
+    storage.upload_file("uploads/sample.txt", "documents/sample.txt")
+
+    storage.list_files()
+
 
 if __name__ == "__main__":
 

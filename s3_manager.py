@@ -31,3 +31,41 @@ class S3Manager:
         except Exception as e:
 
             print("Error creating bucket:", e)
+
+    def upload_file(self, file_path, object_name=None):
+
+        try:
+
+            if object_name is None:
+
+                object_name = file_path.split("/")[-1]
+
+            self.s3.upload_file(file_path, self.bucket_name, object_name)
+
+            print(f"File uploaded successfully: {object_name}")
+
+        except Exception as e:
+
+            print("Upload failed:", e)
+
+    def list_files(self):
+
+        try:
+
+            response = self.s3.list_objects_v2(Bucket=self.bucket_name)
+
+            if "Contents" not in response:
+
+                print("Bucket is empty.")
+
+                return
+
+            print("\nFiles stored in S3:\n")
+
+            for obj in response["Contents"]:
+
+                print(f"File: {obj['Key']} | " f"Size: {obj['Size']} bytes")
+
+        except Exception as e:
+
+            print("Error listing files:", e)
